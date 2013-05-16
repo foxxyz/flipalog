@@ -1,0 +1,32 @@
+/*
+JS Catalog IE Stylesheet
+
+URL: 		TBA
+Created by: 	Foxxyz/Ivo KH Janssen
+For:		The Code Dealers
+		The Plant System
+Site Design by:	The Code Dealers
+		
+http://www.codedealers.com
+
+*/
+
+/******************\
+| GENERAL STYLES   |
+\******************/
+
+* html .shadow {
+	visibility: hidden;
+}
+
+* html .zoom {
+	behavior: url(iepngfix.htc);
+}
+
+* html #catalog #navigation .prev {
+	background: transparent url(cssimages/arrows-ie.png) no-repeat scroll left top;
+	}
+	
+* html #catalog #navigation .next {
+	background: transparent url(cssimages/arrows-ie.png) no-repeat scroll right top;
+	}

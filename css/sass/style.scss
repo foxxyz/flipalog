@@ -1,0 +1,361 @@
+/*
+Flipalog stylesheet
+
+URL: 			TBA
+Created by: 	Ivo KH Janssen / ivo@codedealers.com
+For:			Code Dealers
+		
+http://codedealers.com
+
+*/
+
+/*******************************
+
+	GENERAL STYLES
+
+*******************************/
+
+@import "compass/css3";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	color: #E51A20;
+	text-decoration: none;
+	background-color: inherit;
+
+	&:hover {
+		color: #fff;
+		background-color: inherit;
+	}
+}
+
+body, html {
+	height: 100%;
+	overflow: hidden;
+}
+
+body {
+	color: #222;
+	background-color: #f5f5f5;
+	font-family: 'Open Sans', sans-serif;
+}
+
+footer {
+	position: absolute;
+	width: 70%;
+	margin-left: -35%;
+	bottom: 0;
+	left: 50%;
+	background: url(cssimages/transparent-bg.png) repeat;
+	z-index: 200;
+	border-top-right-radius: 20px;
+	border-top-left-radius: 20px;
+	@include transition(bottom .5s ease);
+	padding-top: 10px;
+	&.hidden {
+		bottom: -90px;
+		padding-top: 5px;
+		opacity: .5;
+		#categories {
+			background: url(cssimages/arrow-up.png) no-repeat center top;
+			padding-top: 20px;
+		}
+		&:hover {
+			bottom: 0;
+			padding-top: 10px;
+			opacity: 1;
+		}
+	}
+	&.show {
+		bottom: 0;
+		padding-top: 10px;
+		opacity: 1;
+	}
+	&.hidden:hover #categories {
+		background-image: none;
+	}
+}
+
+h1 {
+	font-family: 'Oxygen', sans-serif;
+	text-transform: uppercase;
+	font-weight: normal;
+}
+
+img {
+	border: none;
+}
+
+#catalog {
+	width: 100%;
+	height: 100%;
+	position: relative;
+
+	img {
+		display: block;
+	}
+
+	.front, .back {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		@include background(linear-gradient(top left, #fff, #eee));
+	}
+
+	.front a {
+		display: block;
+	}
+
+	.back {
+		left: -100%;
+		a {
+			display: block;
+		}
+	}
+
+	.page {
+		width: 50%;
+		height: 100%;
+		position: absolute;
+		color: inherit;
+		left: 50%;
+		top: 0;
+		z-index: 1;
+		@include transition(left .5s ease-in-out);
+	}
+	.flipped + {
+		.flipped, .page:not(.flipped) + .page:not(.flipped) {
+			z-index: 2;
+		}
+	}
+	.page:not(.flipped):first-child + .page:not(.flipped) {
+		z-index: 2;
+	}
+	.flipped + {
+		.flipped + .flipped {
+			z-index: 3;
+		}
+		.page:not(.flipped) {
+			z-index: 4;
+		}
+	}
+	.page:not(.flipped):first-child {
+		z-index: 4;
+	}
+	#navigation {
+		color: #E51A20;
+		font-size: 72px;
+		line-height: 50px;
+
+		.next {
+			position: absolute;
+			right: 20px;
+			top: 50%;
+			height: 50px;
+			margin-top: -25px;
+			color: inherit;
+			cursor: pointer;
+			z-index: 99;
+			display: block;
+			text-shadow: 5px 2px 8px #000;
+			width: 60px;
+			white-space: nowrap;
+
+			&:before {
+				content: '▸';
+				display: block;
+				float: left;
+				margin-right: 4em;
+			}
+			&:hover {
+				color: #fff;
+			}
+			&:focus {
+				outline: none;
+			}
+		}
+
+		.prev {
+			position: absolute;
+			left: 10px;
+			top: 50%;
+			width: 60px;
+			height: 50px;
+			color: inherit;
+			cursor: pointer;
+			margin-top: -25px;
+			z-index: 99;
+			text-shadow: -5px 2px 8px #000;
+			display: block;
+			white-space: nowrap;
+			text-align: right;
+			overflow: hidden;
+
+			&:before {
+				content: '◂';
+				display: block;
+			}
+			&:hover {
+				color: #fff;
+			}
+			&:focus {
+				outline: none;
+			}
+		}
+	}
+}
+
+#categories, #options {
+	font-weight: bold;
+	text-align: center;
+}
+
+#categories {
+	width: 100%;
+	margin: 0 auto;
+
+	a {
+		font-size: 11px;
+		display: block;
+		height: 50px;
+		padding: 0 10px;
+		background-position: center center;
+		background-repeat: no-repeat;
+		text-indent: -9000px;
+		margin: 0 auto;
+		&:hover {
+			text-decoration: none;
+			color: #FFFFFF;
+			background-color: inherit;
+		}
+	}
+
+	li {
+		display: block;
+		float: left;
+		width: 14%;
+	}
+
+	.front a, .back a {
+		width: 50px;
+		height: 50px;
+		font-size: 60px;
+		line-height: 50px;
+		text-indent: 0;
+		text-align: center;
+	}
+}
+
+#custompage1, #custompage2, #custompage3 {
+	font-size: 5em;
+	line-height: 100%;
+	text-align: center;
+
+	p {
+		padding: 1em;
+		margin-top: 40%;
+	}
+}
+
+#options {
+	list-style: none;
+	margin: 0 0 10px;
+	padding-top: 10px;
+	clear: both;
+
+	a {
+		text-decoration: none;
+		font-size: 10px;
+		color: #888;
+		background-color: inherit;
+		&:hover {
+			color: #fff;
+		}
+	}
+
+	li {
+		display: inline;
+		padding: 0 5px 0 12px;
+		line-height: 12px;
+	}
+}
+
+#wrapper {
+	width: 100%;
+	height: 100%;
+
+	> a {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 100;
+	}
+}
+
+.enhanced #catalog {
+	.front, .back {
+		@include transform(rotateY(0));
+		@include transform-style(preserve-3d);
+		@include backface-visibility(hidden);
+		@include transform-origin(0 50% 0);
+		@include transition(transform .8s ease);
+	}
+	.back {
+		@include transform(rotateY(180deg));
+		@include transform-origin(100% 50% 0);
+	}
+	.flipped {
+		.front {
+			@include transform(rotateY(-180deg));
+		}
+		.back {
+			@include transform(rotateY(0));
+		}
+	}
+	.page {
+		@include perspective(1500px);
+	}
+}
+
+.normal #catalog {
+	.back {
+		display: none;
+	}
+	.flipped {
+		.back {
+			display: block;
+		}
+		.front {
+			display: none;
+		}
+	}
+}
+
+.start {
+	.page {
+		left: 25% !important;
+	}
+	.next {
+		
+	}
+}
+
+.next.active {
+	color: #fff !important;
+}
+
+@media screen and (min-width: 1000px) {
+	footer {
+		width: 640px;
+		margin-left: -320px;
+	}
+	#categories {
+		width: 630px;
+	}
+}
