@@ -9,7 +9,7 @@ Prerequisites
 * PHP4+ 
 * SASS & Compass
 
-For image processing GD support is required
+For image processing GD support is required.
 
 Usage
 -----
